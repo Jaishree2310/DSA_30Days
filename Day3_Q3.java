@@ -1,5 +1,5 @@
+//implement queue using stack
 public class Day3_Q3 {
-    
 
     public static void main(String[] args) {
         

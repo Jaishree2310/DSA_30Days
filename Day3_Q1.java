@@ -1,3 +1,4 @@
+//middle of the LL
 public class Day3_Q1 {
     // Definition of the ListNode class
     public static class ListNode {

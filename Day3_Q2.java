@@ -1,3 +1,4 @@
+//convert binary number in the LL to integer
 public class Day3_Q2 {
 
     public int getDecimalValue(ListNode head) {
