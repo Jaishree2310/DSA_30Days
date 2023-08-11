@@ -1,31 +1,34 @@
-//605. Can Place Flowers
+//933. Number of Recent Calls
+
+import java.util.ArrayList;
 
 public class Day9_Q2 {
-    public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        if (n == 0) {
-            return true;
-        }
+    public static void main(String[] args) {
+        RecentCounter counter = new RecentCounter();
         
-        for (int i = 0; i < flowerbed.length; i++) {
-            if (flowerbed[i] == 0 && (i == 0 || flowerbed[i-1] == 0) && (i == flowerbed.length-1 || flowerbed[i+1] == 0)) {
-                flowerbed[i] = 1;
-                n--;
-                if (n == 0) {
-                    return true;
-                }
-            }
+        int[] timestamps = {1, 100, 3001, 3002};
+        for (int timestamp : timestamps) {
+            int result = counter.ping(timestamp);
+            System.out.println("Number of recent pings: " + result);
         }
-        return false;
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        int[] flowerbed = {1, 0, 0, 0, 1};
-        int n = 1;
-        Day9_Q2 solution = new Day9_Q2();
-        boolean canPlace = solution.canPlaceFlowers(flowerbed, n);
-        System.out.println("Can place " + n + " flowers: " + canPlace);
+class RecentCounter {
+    ArrayList<Integer> calls;
+
+    public RecentCounter() {
+        calls = new ArrayList<Integer>();
+    }
+
+    public int ping(int t) {
+        calls.add(t);
+        int count = 0;
+        for (Integer call : calls) {
+            if (t - call <= 3000)
+                count++;
+        }
+        return count;
     }
 }
 
