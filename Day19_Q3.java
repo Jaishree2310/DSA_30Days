@@ -1,0 +1,29 @@
+//459. Repeated Substring Pattern
+
+
+public class Day19_Q3 {
+    public static void main(String[] args) {
+        Day19_Q3 solutionInstance = new Day19_Q3();
+        String s = "abcabcabc"; // Replace with your string
+        boolean result = solutionInstance.new Solution().repeatedSubstringPattern(s);
+        System.out.println("Result: " + result);
+    }
+
+    class Solution {
+        public boolean repeatedSubstringPattern(String s) {
+            int n = s.length();
+            for (int i = 1; i <= n / 2; i++) {
+                if (n % i == 0) {
+                    String substring = s.substring(0, i);
+                    StringBuilder repeated = new StringBuilder();
+                    for (int j = 0; j < n / i; j++) {
+                        repeated.append(substring);
+                    }
+                    if (repeated.toString().equals(s)) return true;
+                }
+            }
+            return false;
+        }
+    }
+}
+
